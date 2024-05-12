@@ -1,0 +1,46 @@
+
+@startuml
+
+class House {
+    -id: int
+    -owner: Person[]
+}
+
+class BoundarySurface {
+    -area: float
+    -polygon: Polygon
+}
+
+class WallSurface {
+    -color: string
+}
+
+class RoofSurface {
+    -slopeDirection: string
+}
+
+class FloorSurface {
+    -heated: boolean
+}
+
+class Person {
+    -id: int
+    -housesOwned: House[]
+}
+
+class Polygon {
+    -vertices: Point[]
+}
+
+class Point {
+    -x: float
+    -y: float
+    -z: float
+}
+
+House "1" -- "0..*" BoundarySurface : contains
+BoundarySurface <|-- WallSurface
+BoundarySurface <|-- RoofSurface
+BoundarySurface <|-- FloorSurface
+
+@enduml
